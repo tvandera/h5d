@@ -186,13 +186,13 @@ herr_t  H5Pget_attr_creation_order(hid_t plist_id, uint *crt_order_flags);
 herr_t  H5Pset_obj_track_times(hid_t plist_id, hbool_t track_times);
 herr_t  H5Pget_obj_track_times(hid_t plist_id, hbool_t *track_times);
 herr_t  H5Pmodify_filter(hid_t plist_id, H5Z_filter_t filter, uint flags, size_t cd_nelmts,
-                           const uint cd_values[]);
+                           const uint[] cd_values);
 herr_t  H5Pset_filter(hid_t plist_id, H5Z_filter_t filter, uint flags, size_t cd_nelmts,
-                        const uint c_values[]);
+                        const uint[] c_values);
 int     H5Pget_nfilters(hid_t plist_id);
 H5Z_filter_t    H5Pget_filter2(hid_t plist_id, uint filter, uint *flags, size_t *cd_nelmts,
-                                 uint cd_values[], size_t namelen, char name[], uint *filter_config);
-herr_t  H5Pget_filter_by_id2(hid_t plist_id, H5Z_filter_t id, uint *flags, uint cd_values[],
+                                 uint[] cd_values, size_t namelen, char[] name, uint *filter_config);
+herr_t  H5Pget_filter_by_id2(hid_t plist_id, H5Z_filter_t id, uint *flags, uint[] cd_values,
                                uint *filter_config);
 htri_t  H5Pall_filters_avail(hid_t plist_id);
 herr_t  H5Premove_filter(hid_t plist_id, H5Z_filter_t filter);
@@ -258,8 +258,8 @@ herr_t  H5Pget_core_write_tracking(hid_t fapl_id, hbool_t *is_enabled, size_t *p
 
 herr_t  H5Pset_layout(hid_t plist_id, H5D_layout_t layout);
 H5D_layout_t    H5Pget_layout(hid_t plist_id);
-herr_t  H5Pset_chunk(hid_t plist_id, int ndims, const hsize_t dim[]);
-int     H5Pget_chunk(hid_t plist_id, int max_ndims, hsize_t dim[]);
+herr_t  H5Pset_chunk(hid_t plist_id, int ndims, const hsize_t[] dim);
+int     H5Pget_chunk(hid_t plist_id, int max_ndims, hsize_t[] dim);
 herr_t  H5Pset_external(hid_t plist_id, const char *name, off_t offset, hsize_t size);
 int     H5Pget_external_count(hid_t plist_id);
 herr_t  H5Pget_external(hid_t plist_id, uint idx, size_t name_size, char *name, hsize_t *size);

@@ -293,9 +293,9 @@ herr_t  H5Tenum_valueof(hid_t type, const char *name, void *value);
 
 hid_t   H5Tvlen_create(hid_t base_id);
 
-hid_t   H5Tarray_create2(hid_t base_id, uint ndims, const hsize_t dim[]);
+hid_t   H5Tarray_create2(hid_t base_id, uint ndims, const hsize_t[] dim);
 int     H5Tget_array_ndims(hid_t type_id);
-int     H5Tget_array_dims2(hid_t type_id, hsize_t dims[]);
+int     H5Tget_array_dims2(hid_t type_id, hsize_t[] dims);
 
 herr_t  H5Tset_tag(hid_t type, const char *tag);
 char   *H5Tget_tag(hid_t type);

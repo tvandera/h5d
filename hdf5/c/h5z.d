@@ -103,7 +103,7 @@ alias H5Z_filter_func_t    = H5Z_cb_return_t function (H5Z_filter_t filter, void
                                                        size_t buf_size, void* op_data);
 alias H5Z_can_apply_func_t = htri_t function (hid_t dcpl_id, hid_t type_id, hid_t space_id);
 alias H5Z_set_local_func_t = herr_t function (hid_t dcpl_id, hid_t type_id, hid_t space_id);
-alias H5Z_func_t           = size_t function (uint flags, size_t cd_nelmts, const uint cd_values[],
+alias H5Z_func_t           = size_t function (uint flags, size_t cd_nelmts, const uint[] cd_values,
                                               size_t nbytes, size_t *buf_size, void **buf);
 
 herr_t  H5Zregister(const void *cls);

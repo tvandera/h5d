@@ -399,7 +399,7 @@ unittest {
     assert(file.userblock == 512);
     file.createGroup("bar");
     auto f = File(filename, "r+b");
-    ubyte data[512];
+    ubyte[512] data;
     foreach (i, ref x; data)
         x = cast(ubyte) (i % 256);
     f.rawWrite(data);

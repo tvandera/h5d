@@ -129,7 +129,7 @@ struct H5FD_class_t {
     herr_t  function (H5FD_t *file, hid_t dxpl_id, hbool_t closing) truncate;
     herr_t  function (H5FD_t *file, ubyte *oid, uint lock_type, hbool_t last) lock;
     herr_t  function (H5FD_t *file, ubyte *oid, hbool_t last) unlock;
-    H5FD_mem_t fl_map[H5FD_mem_t.H5FD_MEM_NTYPES];
+    H5FD_mem_t[H5FD_mem_t.H5FD_MEM_NTYPES] fl_map;
 }
 
 struct H5FD_free_t {

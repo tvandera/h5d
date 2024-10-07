@@ -22,7 +22,7 @@ struct H5AC_cache_config_t {
     hbool_t rpt_fcn_enabled;
     hbool_t open_trace_file;
     hbool_t close_trace_file;
-    char    trace_file_name[H5AC__MAX_TRACE_FILE_NAME_LEN + 1];
+    char    [H5AC__MAX_TRACE_FILE_NAME_LEN + 1]trace_file_name;
     hbool_t evictions_enabled;
     hbool_t set_initial_size;
     size_t  initial_size;
