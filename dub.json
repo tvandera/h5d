@@ -21,6 +21,5 @@
     ],
     "sourcePaths": ["hdf5"],
     "importPaths": ["."],
-    "libs": ["hdf5"],
-    "lflags": ["-L/usr/local/lib"]
+    "lflags" : [ "-L$PACKAGE_DIR/c_hdf5/lib", "-lhdf5" ],
 }
