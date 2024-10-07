@@ -1,7 +1,7 @@
 module hdf5.exception;
 
 import std.traits       : ParameterTypeTuple, ReturnType, isIntegral, isSigned;
-import std.exception    : assertThrown, assertNotThrown, enforceEx;
+import std.exception    : assertThrown, assertNotThrown, enforce;
 import std.string       : fromStringz, format;
 import std.conv         : to;
 
@@ -160,11 +160,11 @@ public class H5Exception : Exception {
             super(msg, file, line, next);
         }
         this(H5ErrorStack stack, Throwable next = null) {
-            super(stack.to!string, next);
+            super(stack.toString, next);
             this.stack = stack;
         }
         this(H5ErrorStack stack, string file, size_t line, Throwable next = null) {
-            super(stack.to!string, file, line, next);
+            super(stack.toString, file, line, next);
             this.stack = stack;
         }
     }
@@ -235,7 +235,7 @@ unittest {
 public alias errorCheckH5(alias func) = errorCheck!(func, H5Exception.check);
 
 public void enforceH5(T, Args...)(T value, lazy string msg, Args args) {
-    enforceEx!H5Exception(value, msg.format(args));
+    enforce!H5Exception(value, msg.format(args));
 }
 
 unittest {
