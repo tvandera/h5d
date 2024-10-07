@@ -29,11 +29,11 @@ private struct H5IDRegistry {
         }
     }
 
-    bool opIn_r(in H5ID obj) const {
+    bool opBinaryRight(string op: "in")(in H5ID obj) const {
         return toAddr(obj) in this;
     }
 
-    bool opIn_r(size_t addr) const {
+    bool opBinaryRight(string op: "in")(size_t addr) const {
         return (addr in registry) !is null;
     }
 
