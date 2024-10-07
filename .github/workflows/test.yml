@@ -1,0 +1,28 @@
+name: Run all D Tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Dub Tests
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-13]
+        dc: [dmd, ldc ]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install D compiler
+        uses: dlang-community/setup-dlang@v2
+        with:
+          compiler: ${{ matrix.dc }}
+
+      - name: Compile HDF5 (C)
+        run: make lib
+
+      - name: Compile d_hdf5 lib (D)
+        run: make dub
+
+      - name: Run tests
+        run: make test
