@@ -55,6 +55,8 @@ unittest {
 
 mixin template makeProperties(alias parent, string suffix, alias func = {}) {
     import std.string, std.typetuple, hdf5.meta;
+    import std.meta : Filter;
+
     static if (__traits(compiles, __traits(allMembers, parent)))
         mixin _makeProperties!(parent, suffix, func,
             Filter!(_variableSuffixMatches!(parent, suffix),__traits(allMembers, parent)));
@@ -126,6 +128,8 @@ mixin template wrapSymbols(alias parent, alias wrapper) {
 
 unittest {
     import std.exception : assertThrown, assertNotThrown;
+    import std.traits : ParameterTypeTuple;
+
     auto wrapper(alias func)(ParameterTypeTuple!(func) args)
     {
         static if (is(ReturnType!(func) == void))

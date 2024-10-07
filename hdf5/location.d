@@ -64,6 +64,8 @@ package abstract class H5Location : H5ID {
 
 // name, filename, flush, comment, fileno
 unittest {
+    import std.path: buildPath;
+
     auto filename = tempDir.buildPath("foo.h5");
     scope(exit) if (filename.exists) filename.remove();
     auto file = new H5File(filename);
